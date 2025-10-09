@@ -170,13 +170,12 @@ void preparaBevanda(MacchinaCaffe *m, Bevanda b) {
     printf("\nPreparazione: %s (%d ml)\n", b.nome, b.ml);
 
     // tempo in secondi (erogazione 5 ml/s). usiamo ceil per coprire resti
-    int tempo = (b.ml + 4) / 5; // equivalente a ceil(ml/5)
+    int tempo = (b.ml + 4) / 5; 
     countdownProgress(tempo);
 
     // Aggiornamento stato
     double consumo = (double)b.ml / 1000.0;
     if (consumo > m->acqua) {
-        // edge-case: se dopo il controllo globale l'acqua è diminuita sotto ml richiesti
         printf("Attenzione: acqua non sufficiente per completare la bevanda. Preparazione interrotta.\n");
         return;
     }
